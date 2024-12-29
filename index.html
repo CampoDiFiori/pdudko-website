@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piotr Dudko</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --text-secondary: #666;
+            --footer-bg: #f8f8f8;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #fff;
+            --text-secondary: #ccc;
+            --footer-bg: #2a2a2a;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .intro {
+            text-align: left;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--footer-bg);
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-color);
+        }
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+    </style>
+    <meta name="description" content="Piotr Dudko's personal website.">
+</head>
+<body>
+    <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script>
+        function setInitialTheme() {
+            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const body = document.body;
+            const icon = document.querySelector('.theme-switch i');
+            
+            if (darkModeMediaQuery.matches) {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-switch i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        setInitialTheme();
+    </script>
+    <div class="container">
+        <div class="intro">
+            <p>
+            Welcome. My name is <b>Piotr Dudko</b>. 
+            <br/>
+            I am Polish. I am a dad. I am a husband. I am a software developer.
+            <br/>
+            <br/>
+            This is my personal website. I will be using it to practice both my writing and my technical skills.
+            Right now this site is hosted using Nginx, but I'm planning to replace it with my own thing, based on iouring -
+            an asychronous interface to the Linux kernel. It will be an overkill, but it will also be a ton of fun.
+            You can follow my progress on Github.
+            <br/>
+            <br/>
+            In the non-technical section of this website, I will be writing about politics, food, art and
+            whatever else interests me in the moment.</p>
+        </div>
+    </div>
+    
+    <footer class="social-links">
+        <a href="https://bsky.app/profile/pdudko.me" target="_blank" aria-label="BlueSky">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/CampoDiFiori" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/piotr-dudko-62a9801aa" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:dudkopiotr@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </footer>
+</body>
+</html>
